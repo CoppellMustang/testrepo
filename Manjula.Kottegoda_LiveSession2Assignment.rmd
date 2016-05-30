@@ -1,0 +1,140 @@
+---
+title: "Manjula Kottegoda Live Session 02 Assignment"
+author: "Manjula Kottegoda"
+date: "May 20, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# R Markdown Assignment
+
+This is an R Markdown document. This document is compiled as part of the Live Session 02 Assignment for MSDS 6306.
+
+
+## 1.	Basic Math
+
+The log of a positive number
+
+```{r}
+log(2)
+```
+
+
+Default base of log() function in R seems to be the natural log also written as ln() which is base e (Euler's Number) and is approximately 2.71828. Also listed are the log of the same number with a different bases.
+
+```{r}
+log(2)
+log10(2)
+log2(2)
+```
+
+
+The log of a negative number 
+
+```{r}
+log(-2)
+log10(-1)
+log2(-2)
+```
+
+
+Values are always positive. Base of a log is always positive. No exponent of a positive number can result being negative. Note: Negative exponents are possible it just means a series of divisions which again results being a very small but positive number.
+
+
+
+
+## 2.	Random number generation.
+
+First we create a vector that we call x_random, consisting of 15 standard random normal values gathered using the rnorm function. Then we and calculate its mean and standard deviation.
+
+```{r cars}
+x_random <- rnorm(15)
+x_random 
+mean(x_random)
+sd(x_random)
+```
+
+
+Now we change the mean to 10 and the standard deviation to 2 and generate another set of random values using the rnorm function. And like before  calculate the mean and standard deviation of the .
+
+```{r}
+x_random <- rnorm(15, mean = 10, sd = 2)
+x_random 
+mean(x_random)
+sd(x_random)
+```
+
+
+We observed that the mean of the vector slightly differs from the specified values when it was generated. rnorm is a function that generates random normals with the given standard deviation. In other words there is a deviation, a hence level of 'approximation' happens when you calculate the mean back from the sample. If you reduce the deviation you can get closer to the specified mean.
+
+```{r}
+mean(rnorm(15, mean = 10, sd = .0001))
+```
+
+
+#3.	Vector Operations
+
+The weights of 6 individuals in kg are 60, 72, 57, 90, 95, 72. And their heights (in m) are 1.80, 1.85, 1.72, 1.90, 1.74, 1.91.
+
+```{r}
+x_weights <- c(60, 72, 57, 90, 95, 72)
+x_heights <- c(1.80, 1.85, 1.72, 1.90, 1.74, 1.91)
+x_weights 
+x_heights
+plot(x_weights, x_heights, main="Scatterplot", 
+  	xlab="Weight ", ylab="Height", pch=19)
+```
+
+Apart from 1 outlier it seems to have a moderate positive correlation. 
+
+
+The BMI for each individual is defined as BMI = weight in kg divided by the square of the height in m.
+
+```{r}
+x_BMI <- x_weights/(x_heights^2)
+x_BMI
+```
+
+
+The mean for weight is
+
+```{r}
+x_weights_mean <- mean(x_weights)
+x_weights_mean
+```
+
+
+
+Subtracting the mean from each value of weight gives
+
+```{r}
+x_weights_minus_mean <- x_weights - mean(x_weights)
+x_weights_minus_mean 
+```
+
+
+
+
+Summing the result. Now you know why we square the deviations from the mean to calculate a standard deviation!
+
+
+```{r}
+sum(x_weights - mean(x_weights))
+```
+
+Or 
+
+0.000002
+
+
+
+
+
+
+
+
+
+
